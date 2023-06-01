@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en"  class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="">
+    
+    
+    <meta name="description" content="">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <script src="/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/static/css/search/style.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/static/css/custom.css" type="text/css"/>
+        
+    
+    
+    <title>                               产测软件调试总结 - mysite</title>
+    
+    <script type="text/javascript">js_vars = {}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/">
+                
+                
+                    <h2>my_site</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class="active"><a  href="/get_started/">get_started</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">Search</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">Keywords separated by space</span>
+                                <span id="search_loading_hint">Loading, wait please ...</span>
+                                <span id="search_download_err_hint">Download error, please check network and refresh again</span>
+                                <span id="search_other_docs_result_hint">Result from other docs</span>
+                                <span id="search_curr_doc_result_hint">Result from current doc</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active with_link"><a href="/get_started/index.html"><span class="label">Brief</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/get_started/产测软件调试总结.html"><span class="label">产测软件调试总结</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>                               产测软件调试总结</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="Last modify date: 2023-06-01">
+                                    2023-06-01
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                            <div id="source_link">
+                                <a href="https://github.com/demi-Vzense/NebulaSDK/blob/main/docs/get_started/产测软件调试总结.md" target="_blank">
+                                    编辑本页
+                                </a>
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <h1 id="%E4%B8%80%E3%80%81%E9%80%9A%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">一、通用注意事项</h1>
+<p>​    <img src="./Img/%E5%86%85%E5%8F%82%E7%AB%99%E6%A0%87%E5%AE%9A%E5%9B%BE.png" alt="" /><br />
+| ID   | 工站 |<br />
+|  ----  | ----  |<br />
+| 1  | 电流 |<br />
+| 2  | 内参 |</p>
+
+<pre class="language-C++"><code class="language-C++"> typedef enum
+{
+    VzExposureControlMode_Auto = 0,
+    VzExposureControlMode_Manual = 1,
+}VzExposureControlMode;
+</code></pre>
+<ul>
+<li>产测软件存放目录不能有中文字符</li>
+<li>扫码枪扫码时，输入法必须为英文输入，否则扫码错误，无法打开相机。</li>
+<li>测试时注意相机类型及灯的类型和角度，使用对应的测试文件测试。</li>
+<li>测试成功但写入MES数据库不成功时会有弹窗提醒，如果不注意直接进行下一站测试，软件会报上一站测试未通过。</li>
+<li>由于网络连接导致发生写入数据库失败时，请重启产测软件。现有设计没有重连数据库的操作。</li>
+<li>标定过程中一定要将相机前面板上的保护膜去掉，注意不要划伤面板，不要弄脏，有无尘布，每站测试前先用无尘布将镜头面板擦拭干净。</li>
+</ul>
+<h1 id="%E4%BA%8C%E3%80%81%E7%94%B5%E6%B5%81%E7%AB%99">二、电流站</h1>
+<h2 id="2.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">2.1、操作注意事项</h2>
+<ul>
+<li>串口触发线需要连接标签为560、DS77的串口线。</li>
+<li>打开图像成功后注意观察图像是否正常，有RGB的，也要看一下RGB图像是否正确。</li>
+<li>测试电流时需要将相机镜头扣在桌面的黑色绒布上（后期会做专门的工装）。</li>
+<li>Trigger out 及Trigger In 测试时查看是否正确上图，默认设置上三张图，注意检查图像是否变化。</li>
+<li>Trigger out 或Trigger In测试中如果出现slave相机不出图的现象，先检查打开测试软件时，slave相机的灯是否常亮，如果常亮，需要重新拔插slave相机的电源、网线及串口线，或重启测试电脑。如果以上操作不能排除问题，考虑是工装信号未发出，需要硬件同事帮忙排查。</li>
+<li>底噪测试需要严格的将相机倒扣到桌面绒布上，并用绒布包严实，后期使用工装测试时也要保证不透光。</li>
+</ul>
+<h2 id="2.2%E3%80%81%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">2.2、软件调试问题</h2>
+<ul>
+<li>因为相机内新加滤波将Trigger In信号过滤掉，需要更改Trigger In触发方式，改为用继电器触发，电流站引入继电器触发相关程序，目前只用channel 3发出触发信号，工装安装时要与软件使用通道相同。如下图所示最右侧为channel 3.</li>
+</ul>
+<p>![](./Img/电流站trigger In继电器触发板.jpg)</p>
+<ul>
+<li>Trigger In串口号配置，注意只填数字。</li>
+</ul>
+
+<pre class="language-bash"><code class="language-bash">#Trigger In 串口号
+TriggerInCom=8
+</code></pre>
+<ul>
+<li>帧率测试项中添加RGB帧率测试。</li>
+<li>新加底噪标定规格值检查，底噪标定时请扣严相机，避免有光透过。</li>
+</ul>
+
+<pre class="language-bash"><code class="language-bash">    #底噪标定（Bottom noise）， LDtype为0,1,2,3,4对应的Max Valid Factor
+    MaxValidFactorBNList=877 877 877 877 877
+
+    #底噪标定， LDtype为0,1,2,3,4对应的Min Valid Factor
+    MinValidFactorBNList=0 0 0 0 0
+
+    #底噪标定，异常占比规格值
+    AbnormalRatio=0.002
+</code></pre>
+<h1 id="%E4%B8%89%E3%80%81%E5%86%85%E5%8F%82%E7%AB%99">三、内参站</h1>
+<h2 id="3.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">3.1、操作注意事项</h2>
+<ul>
+<li><p>配置文件中更新range列表和DepthList配置。</p>
+
+<pre class="language-none"><code class="language-none">  #标定range列表
+  CalibRangeList=0 3 5
+  
+  #7458角度的配置，请检查灯类型及角度
+  CalibMaxDepthList=1249 3123 7495
+  CalibEffectMinDepthList=800 800 800
+  CalibEffectMaxDepthList=1249 3123 4500
+  
+  #6050角度的配置，请检查灯类型及角度
+  #CalibMaxDepthList=1249 3123 7495
+  #CalibEffectMinDepthList=950 950 950
+  #CalibEffectMaxDepthList=1249 3123 4500
+</code></pre>
+</li>
+<li><p>测试时画面中线与拍摄的标定图像黑线尽量重合，锚点及角点信息尽量多。</p>
+</li>
+</ul>
+<p>​    <img src="./Img/%E5%86%85%E5%8F%82%E7%AB%99%E6%A0%87%E5%AE%9A%E5%9B%BE.png" alt="" /></p>
+<ul>
+<li><p>数据库中存储数据较长，加长数据长度，将第二站内参站及第六站终测(ToF)数据长度由255改为500。</p>
+<p><img src="./Img/%E5%86%85%E5%8F%82%E7%AB%99-%E6%95%B0%E6%8D%AE%E9%95%BF%E5%BA%A6.png" alt="image-20230320195157180" /></p>
+</li>
+<li></li>
+</ul>
+<h2 id="3.2%E3%80%81%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">3.2、软件调试问题</h2>
+<ul>
+<li>ToF相机与RGB相机参数个数不同，在MES中存储要区分</li>
+</ul>
+
+<pre class="language-none"><code class="language-none">//g_sqldata存储内容：
+//IR+RGB 相机：
+//Depth内参(9个参数),Depth畸变参数(8个参数),RGB内参(9个参数),RGB畸变参数(8个参数),旋转参数(9个参数),T参数(3个参数)
+//onlyIR 相机：
+//Depth内参(9个参数),Depth畸变参数(8个参数)
+</code></pre>
+<h1 id="%E5%9B%9B%E3%80%81%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%A0%87%E5%AE%9A">四、非线性标定</h1>
+<h2 id="4.1%E3%80%81-%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">4.1、 操作注意事项</h2>
+<ul>
+<li>相机放置到工装里时，相机后面板紧贴工装。同一类型的相机不用每次测量cameraOffset值，确保放入工装位置相同，可以使用同一个值。</li>
+<li>测试过程中注意中心点是否脱靶。</li>
+<li>测试过程中避免人员走动及终测站IR平面光源的影响</li>
+<li>非线性标定成功结束后，复检开始前，一定要将相机断电再上电，使标定参数生效。</li>
+</ul>
+<h2 id="4.2%E3%80%81%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">4.2、软件调试问题</h2>
+<ul>
+<li>将工站名称添加到配置文件，工站显示名称为可配置的。若配置文件里要配置工站名称为中文字符，注意将配置文件的编码格式修改为 UTF-8-BOM。</li>
+</ul>
+<p><img src=".%5CImg%5C%E9%9D%9E%E7%BA%BF%E6%80%A7%E7%AB%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="s非线性站配置文件" /></p>
+<ul>
+<li><p>改为3range标定，rangelist配置要与内参站配置相同。</p>
+
+<pre class="language-none"><code class="language-none">rangelist = 0 3 5
+</code></pre>
+</li>
+<li><p>配置文件中添加数据库名称db_name配置项，配置为正式数据库的数据库名称。代码中没有修改原有的默认连接的测试数据库。</p>
+
+<pre class="language-none"><code class="language-none"> #数据库名称
+ db_name=VzenseFactoryMES_DB
+</code></pre>
+</li>
+</ul>
+<h1 id="%E4%BA%94%E3%80%81%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%A4%8D%E6%A3%80">五、非线性复检</h1>
+<h2 id="5.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">5.1、操作注意事项</h2>
+<ul>
+<li><p>非线性标定结束后，相机位置不需要变动，只需要下电后再重新上电。</p>
+</li>
+<li><p>MES版复检点数配置文件内可配置，可以根据实际需要更改。 现在为检测三个点</p>
+<p><img src=".%5CImg%5C%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%A4%8D%E6%A3%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="非线性复检配置文件" /></p>
+</li>
+</ul>
+<h2 id="5.2%E3%80%81%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">5.2、软件调试问题</h2>
+<ul>
+<li><p>将工站名称添加到配置文件，工站显示名称为可配置的，若配置文件里要配置工站名称为中文字符，注意将配置文件的编码格式修改为 UTF-8-BOM。同非线性标定。</p>
+</li>
+<li><p>配置文件中添加数据库名称db_name配置项，配置为正式数据库的数据库名称。</p>
+
+<pre class="language-none"><code class="language-none">  #数据库名称
+  db_name=VzenseFactoryMES_DB
+</code></pre>
+</li>
+</ul>
+<h1 id="%E5%85%AD%E3%80%81%E5%B9%B3%E9%9D%A2%E5%BA%A6">六、平面度</h1>
+<h2 id="6.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">6.1、操作注意事项</h2>
+<ul>
+<li>相机按照要求放入工装，待测相机与标定板的距离在860mm左右。</li>
+<li>测试完成后可以拔插电源后利用GUITool 查看点云图是否平整。</li>
+</ul>
+<h2 id="6.2%E3%80%81%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">6.2、软件调试问题</h2>
+<ul>
+<li><p>配置文件中将曝光时间设置为1毫秒。</p>
+
+<pre class="language-none"><code class="language-none">#曝光时间
+exposureTime=1000
+</code></pre>
+</li>
+<li><p>新加FOV参数判断灯的类型是否合规</p>
+</li>
+</ul>
+
+<pre class="language-none"><code class="language-none">    #FOV检查， LDtype为0,1,2,3,4对应的Max Valid Factor
+    MaxValidFactorList=15 64 64 15 25
+
+    #FOV检查， LDtype为0,1,2,3,4对应的Min Valid Factor
+    MinValidFactorList=0 0 0 0 0
+
+    #FOV检查，6050 异常占比规格值
+    AbnormalRatio=0.03
+    #FOV检查，7050异常占比规格值
+    #AbnormalRatio=0.001
+</code></pre>
+<ul>
+<li><p>新加PlaneTest()接口检查平面度测试结果。</p>
+
+<pre class="language-bash"><code class="language-bash">  #标准差
+  PC_DistanceStd = 3
+  #相机离测试板距离
+  PC_Distance = 860
+  #块均方差
+  PC_MeanBlockMse = 3
+</code></pre>
+</li>
+<li><p>遇到存储的bin文件错误问题，如下图所示，右侧为正常的confidence和planeness图，左侧为存储的错误图。Frame类型的数据内部data为指针，注意不要更改源地址数据。</p>
+<p><img src="./Img/%E5%B9%B3%E9%9D%A2%E5%BA%A6bin%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E9%94%99%E8%AF%AF%E7%8E%B0%E8%B1%A1.png" alt="平面度bin文件存储错误现象" /></p>
+<p><img src="./Img/%E5%B9%B3%E9%9D%A2%E5%BA%A6Frame%E6%95%B0%E6%8D%AE.png" alt="image-20230317155559922" /></p>
+</li>
+<li><p>平面度传图时confidence图有错乱，是拷贝confidence图时copyTo的调用放到了unlock（）之后，错误图如下</p>
+<p><img src="./Img/%E5%B9%B3%E9%9D%A2%E5%BA%A6%E5%AD%98%E5%9B%BE%E9%94%99%E4%B9%B1%E7%8E%B0%E8%B1%A1.png" alt="平面度存图错乱现象" /></p>
+<p>对应代码已修改：</p>
+<p><img src="./Img/%E5%B9%B3%E9%9D%A2%E5%BA%A6%E5%AD%98%E5%9B%BE%E9%94%99%E4%B9%B1.png" alt="平面度存图错乱" /></p>
+</li>
+</ul>
+<h1 id="%E4%B8%83%E3%80%81%E7%BB%88%E6%B5%8B%EF%BC%88ToF%EF%BC%89">七、终测（ToF）</h1>
+<h2 id="7.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">7.1、操作注意事项</h2>
+<ul>
+<li><p>按照要求将相机放入工装。</p>
+</li>
+<li><p>针对固件版本DS77_S_20230130_B51，测试时使用的测试图卡为大图卡，与现在调焦站使用的不一样，调焦站使用的为小图卡。</p>
+</li>
+<li><p>配置文件中writeMAC一定要设置为1</p>
+
+<pre class="language-none"><code class="language-none">#是否记录MAC地址
+writeMAC=1
+</code></pre>
+</li>
+<li><p>本站需要测试电流，注意将电流表接入相机电源和电脑，并在电脑端配置正确的com口。</p>
+</li>
+<li><p>两个12V恒压调光器(IR平面光源)都需要使用Channel2，如下图所示，按动按钮CH1-2/CH1-4进行切换。切换后的效果如下图：</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8B(ToF)%E6%81%92%E5%8E%8B%E8%B0%83%E5%85%89%E5%99%A8.jpg" alt="" /></p>
+</li>
+</ul>
+<h2 id="7.2%E3%80%81-%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">7.2、 软件调试问题</h2>
+<ul>
+<li><p>配置文件中将曝光时间设置为1毫秒。</p>
+
+<pre class="language-none"><code class="language-none">#曝光时间
+exposureTime=1000
+</code></pre>
+</li>
+<li><p>电流测试与读MAC数据库冲突，导致电流值拿不到，一直为0，调整读MAC顺序。</p>
+</li>
+</ul>
+<p><img src="./Img/%E7%BB%88%E6%B5%8B%E7%94%B5%E6%B5%81%E5%80%BC%E4%B8%80%E7%9B%B4%E4%B8%BA0.png" alt="image-20230320091756939" /></p>
+<ul>
+<li><p>上一个相机测试失败，下一个SetDataMode 失败，直接esc退出，再次扫码测试时报读取图像失败。退出时有关键标志位没有恢复为默认，导致下次执行时状态不对了。</p>
+<p>![image-20230320141748089](./Img/终测-上一次测试失败，下一个setDataMode fail.png)</p>
+<p>![image-20230320142202686](./Img/终测-上一次测试失败，下一个setDataMode fail-2.png)</p>
+</li>
+</ul>
+<p>![image-20230320145332688](./Img/终测-上一次测试失败，下一个setDataMode fail-change.png)</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8B-%E4%B8%8A%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95%E5%A4%B1%E8%B4%A5%EF%BC%8C%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%AF%BB%E5%8F%96%E5%9B%BE%E5%83%8F%E5%A4%B1%E8%B4%A5.png" alt="image-20230320154921635" /></p>
+<ul>
+<li><p>MTF值跳变，输入MTF算法的图像格式做了两次转换，导致计算出的MTF值不准确。</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BMTF%E5%80%BC%E8%B7%B3%E5%8F%98-1.png" alt="image-20230320155635561" /></p>
+<p>终测站将原来IRPixelFormat设置为1的代码注释掉了，现在收到的数据格式本来就是CV_8U</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BMTF%E5%80%BC%E8%B7%B3%E5%8F%98-2.png" alt="image-20230320160109967" /></p>
+</li>
+</ul>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BMTF%E5%80%BC%E8%B7%B3%E5%8F%98-3.png" alt="image-20230320160500395" /></p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BMTF%E5%80%BC%E8%B7%B3%E5%8F%98-4.png" alt="image-20230320160912668" /></p>
+<ul>
+<li><p>MTF、白场及黑场测试失败时允许多测试几遍，导致存入数据库的数据有错误冗余，代码中需要去重，将每项测试结果单独存储，最后只存储一次。</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99.png" alt="image-20230320172352147" /></p>
+</li>
+<li><p>两个数据库访问顺序带来的问题，MAC地址存储在数据库VenseMACAddressPool_DB中，数据库VzenseFactoryMES_DB中存储表DS77MESRecord_tbl和DS77TestFailRecord_tbl。向不同数据库中访问或存储数据时要连接相应的数据库。</p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8B-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BF%E9%97%AE.png" alt="image-20230320193232988" /></p>
+</li>
+</ul>
+<h1 id="%E5%85%AB%E3%80%81%E7%BB%88%E6%B5%8B%EF%BC%88RGB%EF%BC%89%E7%AB%99">八、终测（RGB）站</h1>
+<h2 id="8.1%E3%80%81%E6%93%8D%E4%BD%9C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">8.1、操作注意事项</h2>
+<ul>
+<li><p>黑场测试时用无尘布遮挡RGB镜头后，还是有部分光进入镜头，测试会失败，需要用手再遮挡一下。确认画面是全黑的。</p>
+</li>
+<li><p>两个12V恒压调光器都需要使用Channel1。</p>
+</li>
+<li><p>VDS77L及VDS77P类型相机不需要本站测试，因为没有RGB镜头。</p>
+</li>
+<li><p>配置文件中writeMAC一定要设置为0，本站不写MAC地址。</p>
+
+<pre class="language-none"><code class="language-none">#是否记录MAC地址
+writeMAC=0
+</code></pre>
+</li>
+<li></li>
+</ul>
+<h2 id="8.2%E3%80%81-%E8%BD%AF%E4%BB%B6%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98">8.2、 软件调试问题</h2>
+<ul>
+<li><p>MTF测试失败后程序崩溃退出</p>
+<p>MTF测试失败时会存储mErrorImg，但终测RGB站并没有向mErrorImg里面存储内容，导致程序崩溃。</p>
+</li>
+</ul>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BRGB-MTF%E5%A4%B1%E8%B4%A5%E5%B4%A9%E6%BA%83-1.png" alt="image-20230320163749798" /></p>
+<p><img src="./Img/%E7%BB%88%E6%B5%8BRGB-MTF%E5%A4%B1%E8%B4%A5%E5%B4%A9%E6%BA%83-2.png" alt="image-20230320164043859" /></p>
+<ul>
+<li>同终测（ToF），MTF、白场及黑场测试失败时允许多测试几遍，导致存入数据库的数据有错误冗余，代码中需要去重，将每项测试结果单独存储，最后只存储一次。</li>
+</ul>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/get_started/index.html">
+                            <span class="icon"></span>
+                            <span class="label">Brief</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a>Vzense官网</a><ul><li><a target="_blank" href="https://www.vzense.com/">官网购买</a></li>
+</ul>
+</li>
+<li><a>源码</a><ul><li><a target="_blank" href="https://github.com/demi-Vzense/NebulaSDK">本网站源文件</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="/"></a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/static/js/theme_default/main.js"></script>
+    
+        <script src="/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/static/js/search/search_main.js"></script>
+    
+        <script src="/static/js/custom.js"></script>
+    
+</body>
+
+</html>
